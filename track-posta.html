@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Македонска Пошта - Следење на пратка</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            background: #f4f4f4; 
+            margin: 0; 
+            padding: 20px; 
+        }
+        .container { 
+            max-width: 850px; 
+            margin: auto; 
+            background: white; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15); 
+            overflow: hidden; 
+        }
+        .header { 
+            background: #FFCC00; 
+            color: #003087; 
+            padding: 25px; 
+            text-align: center; 
+            border-bottom: 5px solid #003087;
+        }
+        .search { 
+            padding: 30px; 
+            text-align: center; 
+            background: #f8f8f8; 
+        }
+        input { 
+            width: 65%; 
+            padding: 15px; 
+            font-size: 18px; 
+            border: 2px solid #ccc; 
+            border-radius: 6px; 
+        }
+        button { 
+            padding: 15px 40px; 
+            background: #003087; 
+            color: white; 
+            border: none; 
+            font-size: 18px; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            margin-left: 10px;
+        }
+        .result { padding: 35px; display: none; }
+        .status { 
+            padding: 25px; 
+            background: #e8f5e9; 
+            border-radius: 8px; 
+            margin: 25px 0; 
+            font-size: 19px; 
+            border-left: 6px solid #28a745;
+        }
+        .details { 
+            background: #f9f9f9; 
+            padding: 25px; 
+            border-radius: 8px; 
+            line-height: 1.8;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 13px;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>МАКЕДОНСКА ПОШТА</h1>
+            <p>Официјално следење на пратки / Official Parcel Tracking</p>
+        </div>
+
+        <div class="search">
+            <h2>Внесете број за следење</h2>
+            <input type="text" id="trackingInput" placeholder="Внесете го бројот за следење" oninput="checkInput()">
+            <button onclick="showTracking()">Следи</button>
+        </div>
+
+        <div id="result" class="result">
+            <h2>Број за следење: <span id="showNumber">JJFI4582917364058273</span></h2>
+            
+            <div class="status">
+                <strong>Current Status:</strong> The item is on its way to the destination address<br><br>
+                <strong>Estimated Arrival:</strong> In 7 days<br>
+                <strong>Current Location:</strong> Helsinki Sorting Centre, Finland (out for delivery soon)
+            </div>
+            
+            <div class="details">
+                <strong>Recipient:</strong> Tuomas Seimola<br>
+                <strong>Address:</strong> Käpyläntie 1 J 173, 00610 Helsinki, Finland<br>
+                <strong>Phone:</strong> +358 40 5285911<br>
+                <strong>Next Update:</strong> Tomorrow morning
+            </div>
+        </div>
+
+        <div class="footer">
+            © Македонска Пошта 2026 | Official Tracking Service<br>
+            All rights reserved | www.posta.com.mk
+        </div>
+    </div>
+
+    <script>
+        const correct = "JJFI4582917364058273";
+
+        function checkInput() {
+            const input = document.getElementById('trackingInput').value.trim();
+            if (input !== correct) {
+                document.getElementById('result').style.display = 'none';
+            }
+        }
+
+        function showTracking() {
+            const input = document.getElementById('trackingInput').value.trim();
+            if (input === correct) {
+                document.getElementById('showNumber').innerText = input;
+                document.getElementById('result').style.display = 'block';
+            } else {
+                alert("Invalid tracking number!");
+            }
+        }
+    </script>
+</body>
+</html>
